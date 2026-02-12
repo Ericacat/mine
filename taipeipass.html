@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>台北通 TaipeiPASS - Erica Huang</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --color-bg: #F7F5F2; --color-surface: #FFFFFF; --color-text: #2C2C2C; --color-text-secondary: #6B6B6B; --color-accent: #E85D3C; --color-accent-hover: #D14D2C; --color-border: #E8E3DD; --color-shadow: rgba(0, 0, 0, 0.08); --font-jp: 'Noto Sans JP', sans-serif; --font-en: 'Outfit', sans-serif; --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+body { font-family: var(--font-jp); background-color: var(--color-bg); color: var(--color-text); line-height: 1.7; }
+h1, h2, h3, h4 { font-family: var(--font-en); font-weight: 600; line-height: 1.3; }
+nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(250, 250, 250, 0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid var(--color-border); }
+nav .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+nav .logo { font-family: var(--font-en); font-weight: 600; font-size: 1.25rem; color: var(--color-text); text-decoration: none; transition: var(--transition); }
+nav .logo:hover { color: var(--color-accent); }
+nav .nav-links { display: flex; gap: 2rem; list-style: none; }
+nav a { color: var(--color-text-secondary); text-decoration: none; font-size: 0.95rem; transition: var(--transition); }
+nav .nav-links a:hover { color: var(--color-accent); }
+.back-button { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 6px; color: var(--color-text); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: var(--transition); font-family: var(--font-en); margin-bottom: 2rem; }
+.back-button:hover { border-color: var(--color-accent); color: var(--color-accent); transform: translateX(-4px); box-shadow: 0 2px 8px rgba(232, 93, 60, 0.2); }
+.project-header { padding: 8rem 2rem 4rem; max-width: 1200px; margin: 0 auto; }
+.project-meta { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.project-tag { font-size: 0.8rem; padding: 0.4rem 1rem; background: #F5F5F5; border-radius: 20px; color: var(--color-text-secondary); font-family: var(--font-en); }
+.project-title { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; color: var(--color-text); }
+.project-intro { font-size: 1.25rem; color: var(--color-text-secondary); max-width: 800px; line-height: 1.6; margin-bottom: 3rem; }
+.project-details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; padding: 2rem; background: var(--color-surface); border-radius: 12px; border: 1px solid var(--color-border); }
+.detail-item h4 { font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.detail-item p { font-size: 1rem; color: var(--color-text); }
+.project-images { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+.main-image { width: 100%; border-radius: 12px; margin-bottom: 2rem; background: linear-gradient(135deg, #f5f5f5 0%, #e5e5e5 100%); aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; color: #999; }
+.image-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.image-item { background: var(--color-surface); border-radius: 12px; overflow: hidden; border: 1px solid var(--color-border); box-shadow: 0 2px 8px var(--color-shadow); }
+.image-item-img { width: 100%; aspect-ratio: 4 / 3; background: linear-gradient(135deg, #f5f5f5 0%, #e5e5e5 100%); display: flex; align-items: center; justify-content: center; color: #999; }
+.image-caption { padding: 1.5rem; font-size: 0.9rem; color: var(--color-text-secondary); }
+.project-content { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
+.content-section { margin-bottom: 4rem; }
+.content-section h2 { font-size: 2rem; margin-bottom: 1.5rem; color: var(--color-text); }
+.content-section h3 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--color-text); }
+.content-section p { font-size: 1.05rem; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 1.5rem; }
+.content-section ul { list-style: none; padding-left: 0; }
+.content-section li { padding: 0.75rem 0; padding-left: 1.5rem; position: relative; color: var(--color-text-secondary); font-size: 1.05rem; line-height: 1.6; }
+.content-section li:before { content: "→"; position: absolute; left: 0; color: var(--color-accent); font-weight: bold; }
+.highlight-box { background: #FFF9F0; border-left: 4px solid var(--color-accent); padding: 2rem; margin: 2rem 0; border-radius: 0 8px 8px 0; }
+.highlight-box h4 { color: var(--color-accent); margin-bottom: 1rem; font-size: 1.1rem; }
+.highlight-box p { color: var(--color-text); margin-bottom: 0; }
+.project-nav { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--color-border); }
+.project-nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+.nav-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 2rem; text-decoration: none; color: inherit; transition: var(--transition); box-shadow: 0 2px 8px var(--color-shadow); }
+.nav-card:hover { border-color: var(--color-accent); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); }
+.nav-card-label { font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 0.5rem; font-family: var(--font-en); }
+.nav-card-title { font-size: 1.25rem; color: var(--color-text); }
+footer { padding: 3rem 2rem; text-align: center; color: var(--color-text-secondary); font-size: 0.9rem; border-top: 1px solid var(--color-border); }
+@media (max-width: 768px) {
+    .project-header { padding: 6rem 1.5rem 3rem; }
+    .project-content { padding: 3rem 1.5rem; }
+    .image-grid { grid-template-columns: 1fr; }
+}
+html { scroll-behavior: smooth; }
+</style>
+</head>
+<body>
+<nav>
+    <div class="container">
+        <a href="index.html" class="logo">EH</a>
+        <ul class="nav-links">
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="project-header">
+    <a href="index.html#projects" class="back-button">
+        <span>←</span>
+        <span>Back to Projects</span>
+    </a>
+
+    <div class="project-meta">
+        <span class="project-tag">Government Platform</span>
+        <span class="project-tag">2022 - 2023</span>
+        <span class="project-tag">UI/UX Design</span>
+    </div>
+
+    <h1 class="project-title">台北通<br>TaipeiPASS</h1>
+
+    <p class="project-intro">
+        ビジネス中国語学習プラットフォームのプロダクトデザイン全体を担当。Webサイト、管理画面、Web教室、講師用ミニアプリまで、複雑なシステム全体のUI/UX設計から実装まで一貫して対応しました。
+    </p>
+
+    <div class="project-details-grid">
+        <div class="detail-item">
+            <h4>Role</h4>
+            <p>プロダクトデザイナー</p>
+        </div>
+        <div class="detail-item">
+            <h4>Period</h4>
+            <p>2024年2月 - 現在</p>
+        </div>
+        <div class="detail-item">
+            <h4>Company</h4>
+            <p>株式会社ネットスター</p>
+        </div>
+        <div class="detail-item">
+            <h4>Team Size</h4>
+            <p>6人（小規模チーム）</p>
+        </div>
+    </div>
+</section>
+
+<section class="project-images">
+    <div class="main-image">
+        <span>BizCHINA メイン画像（ここに実際のスクリーンショットを配置）</span>
+    </div>
+
+    <div class="image-grid">
+        <div class="image-item">
+            <div class="image-item-img"><span>Webサイト<br>フロントエンド</span></div>
+            <p class="image-caption">ユーザー向けWebサイト - コース紹介、無料体験、会員登録フロー</p>
+        </div>
+        <div class="image-item">
+            <div class="image-item-img"><span>管理画面<br>バックエンド</span></div>
+            <p class="image-caption">管理画面 - コース管理、会員管理、レポート機能</p>
+        </div>
+        <div class="image-item">
+            <div class="image-item-img"><span>Web教室</span></div>
+            <p class="image-caption">オンライン教室システム - リアルタイムレッスン環境</p>
+        </div>
+        <div class="image-item">
+            <div class="image-item-img"><span>講師用<br>ミニアプリ</span></div>
+            <p class="image-caption">WeChat小程序 - 講師がモバイルから授業準備・管理</p>
+        </div>
+    </div>
+</section>
+
+<section class="project-content">
+    <div class="content-section">
+        <h2>Challenge</h2>
+        <p>BizCHINAプロジェクトでは、教育プラットフォームとして複数の課題に直面していました。</p>
+
+        <h3>主な課題</h3>
+        <ul>
+            <li>無料体験から有料会員への転換率が低く、ビジネス目標達成が困難</li>
+            <li>入会プロセスが5ステップと複雑で、ユーザーが途中で離脱</li>
+            <li>「どうやって始めればいいか分からない」という問い合わせがカスタマーサポートに多発</li>
+            <li>複数のプラットフォーム（Web・管理画面・Web教室・モバイルアプリ）間でUIの一貫性が欠如</li>
+            <li>小規模チーム（6人）で全体の設計・実装・運用を担う必要性</li>
+        </ul>
+
+        <div class="highlight-box">
+            <h4>ビジネスインパクト</h4>
+            <p>無料体験の長いプロセスは、サービス価値を体感する前にユーザーが離脱する原因となっており、収益化の大きな障壁でした。</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Solution</h2>
+        <p>ユーザー体験とビジネス目標の両立を目指し、データと仮説に基づいた改善を実施しました。</p>
+
+        <h3>1. 入会フローの抜本的簡素化</h3>
+        <ul>
+            <li>既存の5ステップを2ステップに削減し、摩擦を最小化</li>
+            <li>各ステップで必要な情報のみを収集する設計</li>
+            <li>進捗インジケーターで「あとどれくらいか」を明示</li>
+        </ul>
+
+        <h3>2. 無料体験から有料体験への転換</h3>
+        <ul>
+            <li>無料体験は価値を感じる前に離脱されやすいという仮説のもと、低価格の有料体験に変更</li>
+            <li>有料化により、本気で学びたいユーザーを集客し、コンバージョン率向上</li>
+            <li>体験後の本会員への移行がスムーズになるよう、シームレスな導線設計</li>
+        </ul>
+
+        <h3>3. 情報アーキテクチャの再構築</h3>
+        <ul>
+            <li>ユーザーが最も必要とする機能（コース予約、教材アクセス、進捗確認）への到達性を最優先</li>
+            <li>ナビゲーションをシンプル化し、「迷わない」体験を実現</li>
+            <li>重要なCTAを視覚的に強調し、次のアクションを明確に</li>
+        </ul>
+
+        <h3>4. 講師用WeChat小程序の開発</h3>
+        <ul>
+            <li>Vue.js + uni-appを使用して、講師がスマートフォンから授業準備・管理できる環境を構築</li>
+            <li>授業スケジュール、教材アップロード、生徒の進捗確認などをモバイルで完結</li>
+            <li>設計から実装まで一貫して担当</li>
+        </ul>
+
+        <h3>5. デザインシステムの構築</h3>
+        <ul>
+            <li>Figmaで統一されたコンポーネントライブラリを作成</li>
+            <li>カラー、タイポグラフィ、スペーシングルールを標準化</li>
+            <li>Web・管理画面・教室・アプリ全てで一貫したビジュアルを実現</li>
+        </ul>
+
+        <div class="highlight-box">
+            <h4>技術スタック</h4>
+            <p>Figma（デザイン）、Vue.js（フロントエンド実装）、uni-app（WeChat小程序）、HTML/CSS/JavaScript</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Results</h2>
+
+        <h3>定量的成果</h3>
+        <ul>
+            <li>会員登録率が大幅に向上（具体的な数値は機密情報のため非公開）</li>
+            <li>カスタマーサポートへの「使い方が分からない」という問い合わせが顕著に減少</li>
+            <li>有料体験への変更により、本気で学びたいユーザーの割合が増加</li>
+        </ul>
+
+        <h3>定性的成果</h3>
+        <ul>
+            <li>ユーザーがより迅速に学習を開始できる体験を実現</li>
+            <li>講師からも「モバイルで管理できて便利」とポジティブなフィードバック</li>
+            <li>小規模チームでも、デザインシステムにより開発効率が向上</li>
+        </ul>
+
+        <h3>学び</h3>
+        <ul>
+            <li>無料 vs 有料という二元論ではなく、「ユーザーに価値を早く体感させる」ことが重要</li>
+            <li>シンプルさは機能の削減ではなく、必要なものへの到達性を高めること</li>
+            <li>小規模チームでは、デザイナーが実装まで担当することで意思疎通が円滑になる</li>
+        </ul>
+
+        <div class="highlight-box">
+            <h4>プロジェクトの継続</h4>
+            <p>現在も継続的に機能追加と改善を行っており、NetKOREA（韓国語学習プラットフォーム）への展開も実現。デザインシステムの再利用性を実証しました。</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Skills & Tools Used</h2>
+        <ul>
+            <li>UI/UXデザイン - ユーザーリサーチ、情報アーキテクチャ、インタラクションデザイン</li>
+            <li>Figma - デザインシステム構築、プロトタイピング、コンポーネントライブラリ</li>
+            <li>フロントエンド開発 - HTML, CSS, JavaScript, Vue.js</li>
+            <li>WeChat小程序開発 - uni-app フレームワーク</li>
+            <li>レスポンシブデザイン - モバイル・タブレット・デスクトップ対応</li>
+            <li>プロジェクト管理 - 小規模チームでのアジャイル開発</li>
+        </ul>
+    </div>
+</section>
+
+<section class="project-nav">
+    <div class="project-nav-grid">
+        <a href="eslite.html" class="nav-card">
+            <div class="nav-card-label">← Previous Project</div>
+            <h3 class="nav-card-title">誠品線上 ECサイト</h3>
+        </a>
+        <a href="index.html#projects" class="nav-card" style="text-align: center;">
+            <div class="nav-card-label">View All</div>
+            <h3 class="nav-card-title">全てのプロジェクト</h3>
+        </a>
+        <a href="taipeipass.html" class="nav-card" style="text-align: right;">
+            <div class="nav-card-label">Next Project →</div>
+            <h3 class="nav-card-title">台北通 TaipeiPASS</h3>
+        </a>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Erica Huang. All rights reserved.</p>
+</footer>
+</body>
+</html>
