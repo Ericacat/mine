@@ -682,3 +682,14 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--color-text-secondary);
 }
+
+/* erica */
+.name{
+    font-size: 13px;
+    color: #2C2C2C;
+    margin-left: 4px;
+}
+.name-en{
+    font-size: 36px;
+    color: var(--color-text);
+}

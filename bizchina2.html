@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="project-detail.css">
 <style>
-/* Additional styles for image-text layouts */
+/* Additional styles for BizCHINA */
 .full-width-image {
     width: 100%;
     border-radius: 16px;
@@ -82,27 +82,34 @@
     font-weight: 600;
 }
 
-.value-list {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
+.value-box {
+    background: #FFF9F0;
+    border-left: 4px solid var(--color-accent);
     padding: 1.5rem;
-    margin: 1.5rem 0;
+    margin: 2rem 0;
+    border-radius: 0 8px 8px 0;
 }
 
-.value-list ul {
+.value-box h4 {
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.value-box ul {
     list-style: none;
     padding-left: 0;
+    margin-bottom: 0;
 }
 
-.value-list li {
+.value-box li {
     padding: 0.5rem 0;
     padding-left: 1.5rem;
     position: relative;
-    color: var(--color-text-secondary);
+    color: var(--color-text);
 }
 
-.value-list li:before {
+.value-box li:before {
     content: "✓";
     position: absolute;
     left: 0;
@@ -240,7 +247,7 @@
             </ul>
 
             <h4>設計アプローチ</h4>
-            <p>これらの異なるニーズを統合し、全員が納得できる解決策を設計しました：</p>
+            <p>これらの異なるニーズを理解し、全員が納得できる解決策を設計しました：</p>
             <ul>
                 <li><strong>5ステップ → 2ステップに簡素化</strong></li>
                 <li>料金を最初に明示（経営層の透明性ニーズに対応）</li>
@@ -255,9 +262,9 @@
 
             <div class="highlight-box">
                 <h4>成果</h4>
-                <p>✅ 入会率が大幅向上<br>
-                ✅ カスタマーサポートへの問い合わせが顕著に減少<br>
-                ✅ ユーザーがより迅速に学習を開始できる体験を実現</p>
+                <p>✅ カスタマーサポートへの問い合わせが顕著に減少<br>
+                ✅ ユーザーがより迅速に学習を開始できる体験を実現<br>
+                ✅ 「使い方が分からない」という問い合わせが大幅減少</p>
             </div>
         </div>
     </div>
@@ -266,15 +273,15 @@
     <div class="content-section">
         <h2>Solution 2｜前端再構築とシステム統合</h2>
         
-        <p>6人の小規模チームで、専任のフロントエンドエンジニアがいない状況でした。私はデザイナー兼フロントエンド開発者として、設計から実装まで一貫して担当することで、開発プロセスを簡素化しました。</p>
+        <p>6人の小規模チームで、専任フロントエンドエンジニアがいない状況でした。私はデザイナー兼フロントエンド開発者として、設計から実装まで一貫して担当しました。</p>
 
-        <div class="value-list">
-            <strong>組織へのメリット：</strong>
+        <div class="value-box">
+            <h4>この体制のメリット</h4>
             <ul>
                 <li>設計と実装の乖離がゼロ（自分で実装するため）</li>
-                <li>コミュニケーションコストの削減（設計→実装の伝達が不要）</li>
-                <li>開発スピードの向上（QAの往復が少ない）</li>
-                <li>人的リソースの最適化（専任フロントエンド不要）</li>
+                <li>設計QAの往復が不要</li>
+                <li>設計意図を完璧に実現</li>
+                <li>開発スピードの向上</li>
             </ul>
         </div>
 
@@ -375,9 +382,9 @@
 
         <h3>定量的成果</h3>
         <ul>
-            <li>会員登録率が大幅向上（具体的な数値は機密情報のため非公開）</li>
             <li>カスタマーサポート問い合わせが顕著に減少</li>
             <li>開発効率向上：前端再構築により、新機能追加時間が短縮</li>
+            <li>保守コスト削減：レスポンシブ対応で二重開発が不要に</li>
         </ul>
 
         <h3>定性的成果</h3>
@@ -391,8 +398,8 @@
         <h3>学び</h3>
         <ul>
             <li>小規模チーム（6人）では、デザイナーが実装まで担当することで意思疎通が円滑になる</li>
+            <li>設計から実装まで同じ人が担当すると、設計QAの往復が不要になり品質が向上する</li>
             <li>段階的な改善アプローチにより、既存サービスを止めずに大規模リニューアルが可能</li>
-            <li>無料 vs 有料という二元論ではなく、「ユーザーに価値を早く体感させる」ことが重要</li>
         </ul>
 
         <div class="highlight-box">
