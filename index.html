@@ -6,45 +6,66 @@
 <title>黃楉婷 (Erica Huang) - Product Designer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- Navigation -->
-<nav>
-    <div class="container">
-        <a href="index.html" class="logo">EH</a>
-        <ul class="nav-links">
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </div>
-</nav>
 
 <!-- Hero Section -->
-<section class="hero">
+<section class="hero-minimal">
     <div class="hero-content">
-        <div class="hero-label">Design × Frontend Implementation</div>
-        <p class="name">コウ　ジャクテイ</p>
-        <h1>黃楉婷 <span class="name-en">Erica Huang</span></h1>
-        <p class="hero-subtitle">
-            デザインからフロントエンド実装まで一貫して対応。<br>
-            プロダクトの目標に応じて、最適な形で実現します。
-        </p>
-    </div>
-    <div class="hero-stats">
-        <div class="stat">
-            <div class="stat-number">10+</div>
-            <div class="stat-label">年の経験</div>
+        <!-- 左側：燈 + 標題 -->
+        <div class="hero-left">
+            <div class="decoration-container">
+                <img src="lamp.svg" alt="">
+            </div>
+            
+            <h1>
+                <span class="line1">DESIGN ×</span>
+                <span class="line2">FRONTEND</span>
+                <span class="line3">IMPLEMENTATION</span>
+            </h1>
         </div>
-        <div class="stat">
-            <div class="stat-number">50+</div>
-            <div class="stat-label">プロジェクト</div>
-        </div>
-        <div class="stat">
-            <div class="stat-number">N1</div>
-            <div class="stat-label">日本語能力</div>
+        
+        <!-- 右側：名字 + 說明 + 數據 -->
+        <div class="hero-right">
+            <div class="name-section">
+                <div class="name-jp">
+                    <span class="char">
+                        <span class="reading">コク</span>
+                        <span class="kanji">黃</span>
+                    </span>
+                    <span class="name-gap"></span>
+                    <span class="char">
+                        <span class="reading">ジャク</span>
+                        <span class="kanji">楉</span>
+                    </span>
+                    <span class="char">
+                        <span class="reading">テイ</span>
+                        <span class="kanji">婷</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="description-section">
+                <p>デザインからフロントエンド実装まで一貫して対応。</p>
+                <p>プロダクトの目標に応じて、最適な形で実現します。</p>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">年の経験</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">UI・Web案件</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">N1</div>
+                    <div class="stat-label">日本語能力</div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -52,7 +73,7 @@
 <!-- Featured Projects -->
 <section id="projects" class="section">
     <div class="section-header">
-        <h2 class="section-title">Featured Projects</h2>
+        <div class="section-title">Featured Projects</div>
         <p class="section-subtitle">厳選したプロジェクトをご紹介します</p>
     </div>
 
@@ -148,52 +169,52 @@
 </section>
 
 <!-- Landing Pages Section -->
-<section style="background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: 6rem 0;">
-    <div class="section" style="padding: 0 2rem;">
-        <div class="section-header">
-            <h2 class="section-title">Selected Landing Pages</h2>
-            <p class="section-subtitle">誠品での販促キャンペーンLP - 多様なスタイルとテーマ</p>
+<section class="lp-section">
+    <div class="section-header">
+        <div class="section-title">Selected Landing Pages</div>
+        <p class="section-subtitle">誠品での販促キャンペーンLP - 多様なスタイルとテーマ</p>
+    </div>
+    
+    <div class="lp-grid">
+        <div class="lp-card">
+            <div class="lp-image">
+                <img src="https://cdn.myportfolio.com/815ad6c2-8594-485a-9838-5efef2beda42/9b55e781-a6eb-456d-a074-751c40ec9d1e_carw_202x158x32.png?h=c87940d77f3117978282402398305a37" alt="書籍フェア">
+            </div>
+            <div class="lp-content">
+                <h4 class="lp-title">書籍フェア特設ページ</h4>
+                <p class="lp-description">季節ごとの書籍プロモーション - 温かみのあるビジュアルで読書体験を訴求</p>
+            </div>
         </div>
-        <div class="lp-grid">
-            <div class="lp-card" onclick="openLightbox(this)" data-img="https://cdn.myportfolio.com/815ad6c2-8594-485a-9838-5efef2beda42/9b55e781-a6eb-456d-a074-751c40ec9d1e_carw_202x158x32.png?h=c87940d77f3117978282402398305a37" data-title="書籍フェア特設ページ" data-desc="季節ごとの書籍プロモーション - 温かみのあるビジュアルで読書体験を訴求">
-                <div class="lp-image">
-                    <img src="https://cdn.myportfolio.com/815ad6c2-8594-485a-9838-5efef2beda42/9b55e781-a6eb-456d-a074-751c40ec9d1e_carw_202x158x32.png?h=c87940d77f3117978282402398305a37" alt="LP">
-                </div>
-                <div class="lp-content">
-                    <h4 class="lp-title">書籍フェア特設ページ</h4>
-                    <p class="lp-description">季節ごとの書籍プロモーション - 温かみのあるビジュアルで読書体験を訴求</p>
-                </div>
+        <div class="lp-card" style="opacity: 0.6;">
+            <div class="lp-image">LP画像</div>
+            <div class="lp-content">
+                <h4 class="lp-title">文創商品キャンペーン</h4>
+                <p class="lp-description">ライフスタイル提案型LP - ブランドの世界観を表現</p>
             </div>
-            <div class="lp-card" onclick="alert('画像を追加してください')" style="opacity: 0.6;">
-                <div class="lp-image">LP画像</div>
-                <div class="lp-content">
-                    <h4 class="lp-title">文創商品キャンペーン</h4>
-                    <p class="lp-description">ライフスタイル提案型LP - ブランドの世界観を表現</p>
-                </div>
+        </div>
+        <div class="lp-card" style="opacity: 0.6;">
+            <div class="lp-image">LP画像</div>
+            <div class="lp-content">
+                <h4 class="lp-title">展覧会特設サイト</h4>
+                <p class="lp-description">アート展覧会のチケット販売 - 視覚的インパクトと情報設計の両立</p>
             </div>
-            <div class="lp-card" onclick="alert('画像を追加してください')" style="opacity: 0.6;">
-                <div class="lp-image">LP画像</div>
-                <div class="lp-content">
-                    <h4 class="lp-title">展覧会特設サイト</h4>
-                    <p class="lp-description">アート展覧会のチケット販売 - 視覚的インパクトと情報設計の両立</p>
-                </div>
-            </div>
-            <div class="lp-card" onclick="alert('画像を追加してください')" style="opacity: 0.6;">
-                <div class="lp-image">LP画像</div>
-                <div class="lp-content">
-                    <h4 class="lp-title">セールイベントLP</h4>
-                    <p class="lp-description">限定セールの緊急性を演出 - CTAの最適化で購買を促進</p>
-                </div>
+        </div>
+        <div class="lp-card" style="opacity: 0.6;">
+            <div class="lp-image">LP画像</div>
+            <div class="lp-content">
+                <h4 class="lp-title">セールイベントLP</h4>
+                <p class="lp-description">限定セールの緊急性を演出 - CTAの最適化で購買を促進</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- About Section -->
-<section id="about" class="section">
+<section id="about" class="about-section">
     <div class="section-header">
-        <h2 class="section-title">About</h2>
+        <div class="section-title">About</div>
     </div>
+    
     <div class="about-intro-wrapper">
         <p class="about-intro">
             広告デザインからキャリアをスタートし、WebサイトやアプリのUI/UXなど幅広いデジタル領域に携わってきました。アイデアを形にすることを楽しみながら、ユーザーにとってわかりやすく心地よい体験を作ることを大切にしています。<br><br>
@@ -201,12 +222,6 @@
         </p>
     </div>
 
-    <!-- Illustration -->
-    <div class="about-illustration">
-        <img src="images/designer-at-work.svg" alt="Designer at work" class="designer-illustration">
-    </div>
-
-    <!-- Skills -->
     <div class="skills-grid">
         <div class="skill-category">
             <span class="skill-icon">🎨</span>
@@ -255,23 +270,19 @@
 </section>
 
 <!-- Contact Section -->
-<section id="contact" style="background: var(--color-surface); border-top: 1px solid var(--color-border); padding: 6rem 0;">
-    <div class="section" style="padding: 0 2rem;">
-        <div class="section-header">
-            <h2 class="section-title">Contact</h2>
-        </div>
-        <div class="contact-content">
-            <p class="contact-intro">お仕事のご相談やお問い合わせは、以下よりお気軽にご連絡ください。</p>
-            <div class="contact-links">
-                <a href="mailto:ericacat.jp@gmail.com" class="contact-link">
-                    <span>✉️</span>
-                    <span>ericacat.jp@gmail.com</span>
-                </a>
-                <a href="https://ericacatjp.myportfolio.com/" target="_blank" class="contact-link">
-                    <span>🎨</span>
-                    <span>Portfolio</span>
-                </a>
-            </div>
+<section id="contact" class="contact-section">
+    <div class="contact-content">
+        <div class="section-title">Contact</div>
+        <p class="contact-intro">お仕事のご相談やお問い合わせは、以下よりお気軽にご連絡ください。</p>
+        <div class="contact-links">
+            <a href="mailto:ericacat.jp@gmail.com" class="contact-link">
+                <span>✉️</span>
+                <span>ericacat.jp@gmail.com</span>
+            </a>
+            <a href="https://ericacatjp.myportfolio.com/" target="_blank" class="contact-link">
+                <span>🎨</span>
+                <span>Portfolio</span>
+            </a>
         </div>
     </div>
 </section>
@@ -281,6 +292,5 @@
     <p>&copy; 2026 Erica Huang. All rights reserved.</p>
 </footer>
 
-<script src="js/main.js"></script>
 </body>
 </html>
