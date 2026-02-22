@@ -81,7 +81,7 @@
         <!-- Project 1: BizCHINA -->
         <a href="bizchina.html" class="project-card">
             <div class="project-image">
-                <img src="https://cdn.myportfolio.com/815ad6c2-8594-485a-9838-5efef2beda42/57d00f90-f9d0-40b2-b1b8-97a7e70339d0_carw_202x158x32.png?h=642c5bfc2ae9799539ec2d408051570d" alt="BizCHINA">
+                <img src="images/top1.png" alt="BizCHINA">
             </div>
             <div class="project-content">
                 <div class="project-meta">
@@ -96,10 +96,9 @@
                 <div class="project-highlights">
                     <h4>Key Highlights</h4>
                     <ul>
-                        <li>入会フローを5ステップから2ステップに簡素化</li>
-                        <li>Vue.js + uni-appによる講師用WeChat小程序の設計・実装</li>
-                        <li>カスタマーサポート問い合わせが顕著に減少</li>
-                        <li>NetKOREAへの横展開でデザインシステムの再利用性を実証</li>
+                        <li>ブランド刷新とサイト全体の再設計</li>
+                        <li>Vue.js + uni-appによるフロントエンド実装支援</li>
+                        <li>入会フローの簡素化によりCS問い合わせが顕著に減少</li>
                     </ul>
                 </div>
                 <div class="project-footer">
@@ -176,7 +175,7 @@
     </div>
     
     <div class="lp-grid">
-        <div class="lp-card">
+        <div class="lp-card" onclick="openLightbox('https://cdn.myportfolio.com/815ad6c2-8594-485a-9838-5efef2beda42/9b55e781-a6eb-456d-a074-751c40ec9d1e_carw_202x158x32.png?h=c87940d77f3117978282402398305a37')">
             <div class="lp-image">
                 <img src="https://cdn.myportfolio.com/815ad6c2-8594-485a-9838-5efef2beda42/9b55e781-a6eb-456d-a074-751c40ec9d1e_carw_202x158x32.png?h=c87940d77f3117978282402398305a37" alt="書籍フェア">
             </div>
@@ -185,21 +184,21 @@
                 <p class="lp-description">季節ごとの書籍プロモーション - 温かみのあるビジュアルで読書体験を訴求</p>
             </div>
         </div>
-        <div class="lp-card" style="opacity: 0.6;">
+        <div class="lp-card" onclick="openLightbox('lp-placeholder-2.jpg')" style="opacity: 0.6;">
             <div class="lp-image">LP画像</div>
             <div class="lp-content">
                 <h4 class="lp-title">文創商品キャンペーン</h4>
                 <p class="lp-description">ライフスタイル提案型LP - ブランドの世界観を表現</p>
             </div>
         </div>
-        <div class="lp-card" style="opacity: 0.6;">
+        <div class="lp-card" onclick="openLightbox('lp-placeholder-3.jpg')" style="opacity: 0.6;">
             <div class="lp-image">LP画像</div>
             <div class="lp-content">
                 <h4 class="lp-title">展覧会特設サイト</h4>
                 <p class="lp-description">アート展覧会のチケット販売 - 視覚的インパクトと情報設計の両立</p>
             </div>
         </div>
-        <div class="lp-card" style="opacity: 0.6;">
+        <div class="lp-card" onclick="openLightbox('lp-placeholder-4.jpg')" style="opacity: 0.6;">
             <div class="lp-image">LP画像</div>
             <div class="lp-content">
                 <h4 class="lp-title">セールイベントLP</h4>
@@ -209,6 +208,32 @@
     </div>
 </section>
 
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" alt="">
+</div>
+
+<script>
+function openLightbox(imgSrc) {
+    document.getElementById('lightbox').style.display = 'flex';
+    document.getElementById('lightbox-img').src = imgSrc;
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// ESC キーでも閉じる
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeLightbox();
+    }
+});
+</script>
+
 <!-- About Section -->
 <section id="about" class="about-section">
     <div class="section-header">
@@ -217,8 +242,11 @@
     
     <div class="about-intro-wrapper">
         <p class="about-intro">
-            広告デザインからキャリアをスタートし、WebサイトやアプリのUI/UXなど幅広いデジタル領域に携わってきました。アイデアを形にすることを楽しみながら、ユーザーにとってわかりやすく心地よい体験を作ることを大切にしています。<br><br>
-            また、デザインを実際の成果につなげるため、フロントエンド開発にも挑戦し、Vue.jsを用いた実装や更新まで対応してきました。大規模チームでの分業から小規模チームでの実装まで、状況に応じて柔軟に対応できることが私の強みです。
+            私がデザイナーとして最も大切にしているのは、「必ず解決方法がある」という信念です。<br><br>
+            「使いにくい」「わかりにくい」という声に、私は非常に敏感です。なぜそう感じるのか、どう改善できるのかを考えずにはいられません。<br>
+            システムは無実です。それは人が作り出したもので、必ず改善の余地があります。<br><br>
+            この考え方は、私の仕事のスタイルにも反映されています。<br>レガシーシステムの最適化が必要なとき、自らフロントエンド開発に入り改善の道を開きます。デザインだけでは解決できない課題に直面したときは、経営層や現場と対話し、最適な交点を見つけます。<br><br>
+            「必ず解決方法がある」。共に解決策を見つけ、前に進む。そのために、私は動き続けます。
         </p>
     </div>
 
@@ -273,24 +301,9 @@
 <section id="contact" class="contact-section">
     <div class="contact-content">
         <div class="section-title">Contact</div>
-        <p class="contact-intro">お仕事のご相談やお問い合わせは、以下よりお気軽にご連絡ください。</p>
         <div class="contact-links">
             <a href="mailto:ericacat.jp@gmail.com" class="contact-link">
                 <span>✉️</span>
                 <span>ericacat.jp@gmail.com</span>
             </a>
-            <a href="https://ericacatjp.myportfolio.com/" target="_blank" class="contact-link">
-                <span>🎨</span>
-                <span>Portfolio</span>
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer>
-    <p>&copy; 2026 Erica Huang. All rights reserved.</p>
-</footer>
-
-</body>
-</html>
+        
