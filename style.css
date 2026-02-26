@@ -712,8 +712,12 @@ html {
     color: #999;
     font-size: 0.85rem;
     text-align: center;
-    padding: 2rem;
     border: 1px solid var(--color-border);
+}
+.section-image img{
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* Highlight Boxes */
