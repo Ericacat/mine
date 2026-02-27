@@ -554,7 +554,7 @@ html {
    ========================================== */
 
 .project-header {
-    padding: 6rem 6rem 4rem;
+    padding: 6rem 6rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -605,7 +605,7 @@ html {
 
 /* Content Sections */
 .content-section {
-    padding: 6rem 6rem;
+    padding: 1rem 6rem;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -948,7 +948,6 @@ footer {
 /* ==========================================
    LIGHTBOX
    ========================================== */
-
 .lightbox {
     display: none;
     position: fixed;
@@ -958,20 +957,30 @@ footer {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.95);
+    overflow-y: auto;          /* 改：加這行 */
+    overflow-x: hidden;        /* 改：加這行 */
+    cursor: pointer;
+    padding: 60px 0;           /* 改：加這行 */
+    /* 刪除這兩行：
     justify-content: center;
     align-items: center;
-    cursor: pointer;
+    */
 }
-
 .lightbox-content {
-    max-width: 90%;
+    display: block;            /* 改：加這行 */
+    margin: 0 auto;            /* 改：加這行 */
+    max-width: 900px;          /* 改：從 90% 改成 900px */
+    width: 90%;                /* 改：加這行 */
+    height: auto;              /* 改：加這行 */
+    cursor: default;           /* 改：加這行 */
+    /* 刪除這兩行：
     max-height: 90vh;
     object-fit: contain;
     animation: fadeIn 0.3s ease;
+    */
 }
-
 .lightbox-close {
-    position: absolute;
+    position: fixed;           /* 改：從 absolute 改成 fixed */
     top: 30px;
     right: 50px;
     color: white;
@@ -979,8 +988,8 @@ footer {
     font-weight: 300;
     cursor: pointer;
     transition: var(--transition);
+    z-index: 10000;            /* 改：加這行 */
 }
-
 .lightbox-close:hover {
     color: var(--color-accent);
 }
@@ -997,11 +1006,16 @@ footer {
 }
 
 @media (max-width: 640px) {
-    .lightbox-content {
-        max-width: 95%;
-        max-height: 80vh;
+    .lightbox {                /* 改：加這段 */
+        padding: 50px 0;
     }
-    
+
+    .lightbox-content {
+        max-width: 100%;       /* 改：從 95% 改成 100% */
+        width: 95%;            /* 改：加這行 */
+        /* 刪除：max-height: 80vh; */
+    }
+
     .lightbox-close {
         top: 20px;
         right: 20px;
