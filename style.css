@@ -36,6 +36,48 @@ html {
 }
 
 /* ==========================================
+   LANGUAGE SWITCHER
+   ========================================== */
+
+.lang-switcher {
+    position: fixed;
+    top: 1.5rem;
+    right: 2rem;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-family: var(--font-en);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    background: rgba(247, 245, 242, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--color-border);
+    border-radius: 24px;
+    padding: 0.4rem 0.75rem;
+}
+
+.lang-switcher a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    padding: 0.1rem 0.3rem;
+}
+
+.lang-switcher a:hover {
+    color: var(--color-accent);
+}
+
+.lang-switcher a.active {
+    color: var(--color-accent);
+}
+
+.lang-switcher .divider {
+    color: var(--color-border);
+}
+
+/* ==========================================
    HOMEPAGE - HERO SECTION
    ========================================== */
 
@@ -840,7 +882,29 @@ footer {
    RESPONSIVE - 1440px
    ========================================== */
 
+/* Mobile lightbox - centered layout (inner pages only) */
+#mobile-lightbox {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0;
+}
+
+#mobile-lightbox .lightbox-content {
+    max-width: 90vw;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    margin: 0;
+    object-fit: contain;
+}
+
 @media (max-width: 1024px) {
+    .mobile-zoomable {
+        cursor: zoom-in;
+    }
+
     .hero-minimal {
         padding: 0 3rem;
     }
