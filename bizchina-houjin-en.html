@@ -47,7 +47,7 @@
 
 <!-- Platform Overview -->
 <section class="content-section">
-    <div class="full-width-image">
+    <div class="full-width-image masked-image">
         <img src="images/houjin_dashboard_empty.png">
     </div>
 </section>
@@ -78,7 +78,7 @@
         <h3>Recruitment Page Editor</h3>
         <p>Corporate HR staff can set their own plans, discounts, and publication dates, then create and publish an application page for employees. A real-time preview on the right side gives instant feedback on every change.</p>
 
-        <div class="full-width-image">
+        <div class="full-width-image masked-image">
             <img src="images/houjin_editor.png">
         </div>
     </div>
@@ -95,7 +95,7 @@
         <h3>Email Notification Toggle</h3>
         <p>The system can automatically send reminder emails to encourage attendance — no HR involvement needed. By removing the human cost and the awkwardness of "following up," I created an environment where HR can promote attendance without hesitation.</p>
 
-        <div class="full-width-image">
+        <div class="full-width-image masked-image">
             <img src="images/houjin_dashboard_active.png">
         </div>
     </div>
@@ -108,10 +108,10 @@
 
     <p>Instead of issuing certificates one by one, managers can select multiple employees and download them all at once. This is especially important for time-sensitive tasks like subsidy applications. Past recruitment data and completion records are also available in the "Past Training" page for easy review.</p>
 
-    <div class="full-width-image">
+    <div class="full-width-image masked-image">
         <img src="images/houjin_download.png">
     </div>
-    <div class="full-width-image">
+    <div class="full-width-image masked-image">
         <img src="images/houjin_past.png">
     </div>
 </section>
@@ -194,59 +194,87 @@
 </footer>
 
 <script src="mobile-lightbox.js"></script>
-
 <script>
 (function () {
-    const KEY = 'houjin_auth';
     const PASSWORD = 'ericahuang';
+    const SESSION_KEY = 'houjin_unlocked';
+    const isJP = document.documentElement.lang === 'ja';
 
-    if (sessionStorage.getItem(KEY) === '1') return;
-
-    const overlay = document.createElement('div');
-    overlay.style.cssText = [
-        'position:fixed', 'inset:0', 'z-index:9999',
-        'background:#0d0d0d', 'display:flex', 'align-items:center',
-        'justify-content:center', 'flex-direction:column', 'gap:20px'
-    ].join(';');
-
-    overlay.innerHTML = `
-        <p style="color:#fff;font-family:'Outfit',sans-serif;font-size:14px;letter-spacing:.1em;text-transform:uppercase;opacity:.5;margin:0">Private Project</p>
-        <div style="display:flex;gap:0;border:1px solid rgba(255,255,255,.2);border-radius:6px;overflow:hidden">
+    // Password modal
+    const modal = document.createElement('div');
+    modal.style.cssText = 'display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;flex-direction:column;gap:20px';
+    modal.innerHTML = `
+        <p style="color:rgba(255,255,255,.5);font-family:'Outfit',sans-serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin:0">
+            ${isJP ? 'パスワードを入力してください' : 'Enter password to view'}
+        </p>
+        <div style="display:flex;border:1px solid rgba(255,255,255,.2);border-radius:6px;overflow:hidden">
             <input id="pw-input" type="password" placeholder="Password"
                 style="background:transparent;border:none;outline:none;color:#fff;font-family:'Outfit',sans-serif;font-size:15px;padding:12px 16px;width:200px;caret-color:#fff">
             <button id="pw-btn"
-                style="background:rgba(255,255,255,.08);border:none;border-left:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Outfit',sans-serif;font-size:13px;padding:12px 18px;cursor:pointer;letter-spacing:.05em">Enter</button>
+                style="background:rgba(255,255,255,.08);border:none;border-left:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Outfit',sans-serif;font-size:13px;padding:12px 18px;cursor:pointer">
+                Enter
+            </button>
         </div>
-        <p id="pw-error" style="color:#ff6b6b;font-family:'Outfit',sans-serif;font-size:13px;margin:0;opacity:0">Incorrect password</p>
+        <p id="pw-error" style="color:#ff6b6b;font-family:'Outfit',sans-serif;font-size:13px;margin:0;opacity:0">
+            ${isJP ? 'パスワードが違います' : 'Incorrect password'}
+        </p>
     `;
+    document.body.appendChild(modal);
 
-    document.body.appendChild(overlay);
-    document.body.style.overflow = 'hidden';
+    let pendingSrc = null;
+
+    function openLightbox(src) {
+        const lb = document.getElementById('mobile-lightbox');
+        document.getElementById('mobile-lightbox-img').src = src;
+        lb.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function showModal(src) {
+        pendingSrc = src;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        document.getElementById('pw-error').style.opacity = '0';
+        setTimeout(() => document.getElementById('pw-input').focus(), 50);
+    }
+
+    function closeModal() {
+        modal.style.display = 'none';
+        document.getElementById('pw-input').value = '';
+        pendingSrc = null;
+        document.body.style.overflow = '';
+    }
 
     function attempt() {
         const input = document.getElementById('pw-input');
         if (input.value === PASSWORD) {
-            sessionStorage.setItem(KEY, '1');
-            overlay.style.transition = 'opacity .3s';
-            overlay.style.opacity = '0';
-            setTimeout(() => {
-                overlay.remove();
-                document.body.style.overflow = '';
-            }, 300);
+            sessionStorage.setItem(SESSION_KEY, '1');
+            closeModal();
+            openLightbox(pendingSrc);
         } else {
-            const err = document.getElementById('pw-error');
-            err.style.opacity = '1';
+            document.getElementById('pw-error').style.opacity = '1';
             input.value = '';
             input.focus();
         }
     }
 
     document.getElementById('pw-btn').addEventListener('click', attempt);
-    document.getElementById('pw-input').addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') attempt();
-    });
+    document.getElementById('pw-input').addEventListener('keydown', e => { if (e.key === 'Enter') attempt(); });
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.style.display === 'flex') closeModal(); });
 
-    setTimeout(() => document.getElementById('pw-input').focus(), 100);
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.masked-image').forEach(function (el) {
+            el.addEventListener('click', function () {
+                const src = this.querySelector('img').src;
+                if (sessionStorage.getItem(SESSION_KEY) === '1') {
+                    openLightbox(src);
+                } else {
+                    showModal(src);
+                }
+            });
+        });
+    });
 })();
 </script>
 </body>
